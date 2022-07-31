@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 
 public class BunTest {
     private Bun bun;
-    String name = "Кунжут";
-    float price = 205;
+    private String name = "Кунжут";
+    private float price = 205;
 
     @Before
     public void setUp() throws Exception {
@@ -23,6 +23,6 @@ public class BunTest {
 
     @Test
     public void getPrice() {
-        Assert.assertEquals(price, bun.getPrice(), 10 ^ -6);
+        Assert.assertEquals(price, bun.getPrice(), IngredientTest.delta);
     }
 }

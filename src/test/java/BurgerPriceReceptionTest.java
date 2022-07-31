@@ -10,14 +10,16 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 
-public class BurgerPriceTest {
+import static praktikum.IngredientType.SAUCE;
+
+public class BurgerPriceReceptionTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
     @Mock
     private Ingredient ingredient;
     @Mock
     private Bun bun;
-    Burger burger;
+    private Burger burger;
 
     @Before
     public void setUp() throws Exception {
@@ -32,6 +34,18 @@ public class BurgerPriceTest {
     public void getPrice() {
         Mockito.when(ingredient.getPrice()).thenReturn(200.0f);
         Mockito.when(bun.getPrice()).thenReturn(200.0f);
-        Assert.assertEquals(1000f, burger.getPrice(), 10 ^ -6);
+        Assert.assertEquals(1000f, burger.getPrice(), IngredientTest.delta);
+    }
+
+    @Test
+    public void getReceipt() {
+        Mockito.when(ingredient.getPrice()).thenReturn(200.0f);
+        Mockito.when(bun.getPrice()).thenReturn(200.0f);
+        Mockito.when(ingredient.getType()).thenReturn(SAUCE);
+        Mockito.when(ingredient.getName()).thenReturn("Соус");
+        Mockito.when(bun.getName()).thenReturn("Булка");
+        Assert.assertTrue(burger.getReceipt().contains("Соус"));
+        Assert.assertTrue(burger.getReceipt().contains("Булка"));
+        Assert.assertTrue(burger.getReceipt().contains(SAUCE.toString().toLowerCase()));
     }
 }

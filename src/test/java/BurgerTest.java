@@ -18,11 +18,11 @@ public class BurgerTest {
     @Mock
     private Ingredient ingredient;
 
-    Burger burger;
-    Ingredient ingredient1 = new Ingredient(SAUCE, "Соус1", 200.0f);
-    Ingredient ingredient2 = new Ingredient(SAUCE, "Соус2", 100.0f);
-    Ingredient ingredient3 = new Ingredient(FILLING, "Начинка", 100.0f);
-    Bun bun = new Bun("Булка", 200.0f);
+    private Burger burger;
+    private Ingredient ingredient1 = new Ingredient(SAUCE, "Соус1", 200.0f);
+    private Ingredient ingredient2 = new Ingredient(SAUCE, "Соус2", 100.0f);
+    private Ingredient ingredient3 = new Ingredient(FILLING, "Начинка", 100.0f);
+    private Bun bun = new Bun("Булка", 200.0f);
 
     @Before
     public void setUp() throws Exception {
@@ -58,7 +58,4 @@ public class BurgerTest {
         Assert.assertEquals(burger.ingredients.get(2), ingredient1);
     }
 
-    @Test
-    public void getReceipt() {
-    }
 }

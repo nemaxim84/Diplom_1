@@ -14,7 +14,8 @@ import static praktikum.IngredientType.SAUCE;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
-    Ingredient ingredient;
+    private Ingredient ingredient;
+    static final int delta = 10 ^ -6;
 
     @Parameterized.Parameter
     public String name;
@@ -38,7 +39,7 @@ public class IngredientTest {
 
     @Test
     public void getPrice() {
-        Assert.assertEquals(price, ingredient.getPrice(), 10 ^ -6);
+        Assert.assertEquals(price, ingredient.getPrice(), delta);
     }
 
     @Test
